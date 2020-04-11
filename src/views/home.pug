@@ -3,9 +3,22 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/styles.css")
+        link(rel="stylesheet", href="/styles/styles.css")
         title Guess Mine
     body
-        h1 Hello 
+        .loginBox
+            form#jsLogin
+                input(placeholder="Whats your nickname", type="text")
+        .gameContainer#jsGame
+            .chat
+                ul.chat__messages#jsMessages
+                form.chat__form#jsSendMsg
+                    input(placeholder="Write a message", type="text")
+        script.
+            // window 객체의 events 값에 넣어주는, 이런식으로 서버와 클라이언트에서 한 파일을 같이 사용할 수 있음
+            // 정확히는 백엔드에서 넘겨준 객체를 프론트엔드전체에서 사용할 수 있음
+            // !{events} 이런식의 문법을 써줬을 때 객체를 넘겨주면 객체의 값에 접근할 수 있다
+            // 물론, 넘겨주는 객체가 문자의 형태라면 넘겨주기 전에 JSON.stringify 함수로 변환해줘야한다 
+            window.events = !{events}
         script(src="/socket.io/socket.io.js")
-        script(src="/index.js")
+        script(src="/js/main.js")
